@@ -11,12 +11,12 @@ async def root():
 @app.get("/process")
 async def process(id: str = Query(None, description="查分器id(水鱼查分器为用户名,落雪查分器暂未适配)")):
     # 连接HDFS(Hadoop分布式文件系统)
-    client = InsecureClient(url="http://node1:9870", user="root")
+    client = InsecureClient(url="[hdfs_url]", user="root")
     # 设置水鱼服务器地址
     url = f"https://www.diving-fish.com/api/maimaidxprober/dev/player/records?username={id}"
     headers = {
         "User-Agent": "Mozilla/5.0 (Linux; ElecOS3.0; x64) BMSGIntiService/3.6 (BigDataEngine6.0;HDFS3;HDFS;Hadoop) MaiBigData/1.0.5",
-        "Developer-Token": "IQfMryp0lTUdwWcmGBAs2vLkRV8Jnezh"
+        "Developer-Token": "[Token is Private]"
     }
     # 读取数据
     response = requests.get(url, headers=headers)
